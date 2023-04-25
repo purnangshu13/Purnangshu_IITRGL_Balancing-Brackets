@@ -1,0 +1,60 @@
+package lab3;
+
+import java.util.Stack;
+
+public class BalancedBrackets {
+
+	
+	// write the logic 
+	
+	/**
+	 * psuedocode
+	 *  - Choose the data structure 
+	 *    - Stack - LIFO
+	 *  -input
+	 *    ({[]})
+	 *  -Add the character to the top of the stack 
+	 *    until either of '(' '{' '[' is present 
+	 *    
+	 *  -Create a stack of characters 
+	 *  - Write a loop to push elements  to the stack  
+	 * @return 
+	 */
+	
+   public static boolean isBalanced(String input) {
+		//Write the logic Here
+	    //({[]})
+    	 // Create a stack data structure of character
+    	 Stack<Character> stack = new Stack<>();
+    	
+    	 
+    	 //iterate through the elements of input
+    	 for(int index = 0; index < input.length(); index ++) {
+    		 // extract the character from string 
+    		 char ch = input.charAt(index);
+    		 // if the char is either ({{, then add the element to the stack 
+			if(ch == '(' || ch == '{'|| ch == '[') {
+				// push the char to the  stack 
+				stack.push(ch);
+			}else if (ch == ')' || ch == '}'|| ch == ']'){
+			// start popping elements from stack 
+			// if there is not matching closing bracket, return false 
+			char top = stack.pop();
+			if(
+					(ch == ')'  && top != '(' )||
+					(ch == '}'  && top != '{' )||
+					(ch == ']'  && top != '[' )
+					
+				) {
+				return false;
+			}
+			
+    	 }
+		
+     }
+	return stack.empty();
+    
+  } 
+}    
+ 
+	
